@@ -7,7 +7,7 @@ import { userData } from "./data/userData";
 function App() {
   const [auth, setAuth] = useState(userData);
   const [login, setLogin] = useState(true);
-  console.log("auth", auth);
+
   return (
     <div className="App max-w-2xl mx-auto">
       {login ? (

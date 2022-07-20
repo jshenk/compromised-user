@@ -12,7 +12,6 @@ export const AuthenticatedDashboard = ({
   setAuth,
   setLogin,
 }: AuthenticatedDashboardProps) => {
-  console.log("userData", userData);
   return (
     <div className={"min-h-screen text-left"}>
       <div
