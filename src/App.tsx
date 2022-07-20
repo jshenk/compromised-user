@@ -1,24 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import { AuthenticatedDashboard } from "./components/AuthenticatedDashboard";
+import { LoginForm } from "./components/LoginForm";
+import { userData } from "./data/userData";
 
 function App() {
+  const [auth, setAuth] = useState({ userData });
+  const [login, setLogin] = useState(true);
+  console.log("login", login);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App max-w-2xl mx-auto">
+      {login ? (
+        <LoginForm setLogin={setLogin} setAuth={setAuth} />
+      ) : (
+        <AuthenticatedDashboard
+          auth={auth}
+          setAuth={setAuth}
+          setLogin={setLogin}
+        />
+      )}
     </div>
   );
 }
