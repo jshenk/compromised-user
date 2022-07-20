@@ -5,16 +5,16 @@ import { LoginForm } from "./components/LoginForm";
 import { userData } from "./data/userData";
 
 function App() {
-  const [auth, setAuth] = useState({ userData });
+  const [auth, setAuth] = useState(userData);
   const [login, setLogin] = useState(true);
-  console.log("login", login);
+  console.log("auth", auth);
   return (
     <div className="App max-w-2xl mx-auto">
       {login ? (
         <LoginForm setLogin={setLogin} setAuth={setAuth} />
       ) : (
         <AuthenticatedDashboard
-          auth={auth}
+          userData={auth}
           setAuth={setAuth}
           setLogin={setLogin}
         />

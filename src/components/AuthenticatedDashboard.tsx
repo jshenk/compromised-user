@@ -1,23 +1,18 @@
 import { PasswordAlert } from "./PasswordAlert";
 import { Notification } from "./Notification";
 
-interface DashboardProps {
-  auth: {
-    email: string;
-    meta: {
-      isPasswordCompromised: boolean;
-      compromisedAccounts: {
-        name: string;
-        date: string;
-      }[];
-    };
-  };
-  setAuth: any;
-  setLogin: (loginStatus: boolean) => void;
+interface AuthenticatedDashboardProps {
+  userData: any;
+  setAuth: (meta: any) => void;
+  setLogin: (arg0: boolean) => void;
 }
 
-export const AuthenticatedDashboard = ({ auth, setAuth, setLogin }: any) => {
-  console.log("auth", auth);
+export const AuthenticatedDashboard = ({
+  userData,
+  setAuth,
+  setLogin,
+}: AuthenticatedDashboardProps) => {
+  console.log("userData", userData);
   return (
     <div className={"min-h-screen text-left"}>
       <div
@@ -33,14 +28,16 @@ export const AuthenticatedDashboard = ({ auth, setAuth, setLogin }: any) => {
           Logout
         </button>
       </div>
-      {auth?.meta && auth.meta.isPasswordCompromised && (
-        <Notification type={"warning"}>
-          <PasswordAlert
-            setAuth={setAuth}
-            accounts={auth.meta.compromisedAccounts}
-          />
-        </Notification>
-      )}
+      {userData?.meta &&
+        userData.meta.isPasswordCompromised &&
+        userData.meta.compromisedAccounts && (
+          <Notification type={"warning"}>
+            <PasswordAlert
+              setAuth={setAuth}
+              accounts={userData.meta.compromisedAccounts}
+            />
+          </Notification>
+        )}
     </div>
   );
 };

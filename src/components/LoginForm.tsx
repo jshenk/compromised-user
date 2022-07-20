@@ -14,14 +14,14 @@ export const LoginForm = ({ setLogin, setAuth }: LoginProps) => {
 
   const handleSubmit = (event: { preventDefault: () => void }) => {
     const selectedUser = userData.find(
-      (user) => user.email == email && user.password === password
+      (user) => user.email === email && user.password === password
     );
     if (!!selectedUser) {
       setLogin(false);
       setAuth(selectedUser);
     } else {
       setError(
-        "Invalid email address or password. Please use test emails provided."
+        "Invalid email address or password. Please use test credentials provided."
       );
     }
     event.preventDefault();

@@ -5,6 +5,7 @@ export const userData = [
     password: "pw",
     meta: {
       isPasswordCompromised: false,
+      compromisedAccounts: undefined,
     },
   },
   {
