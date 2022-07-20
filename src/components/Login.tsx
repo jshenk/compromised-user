@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { userData } from "../data/userData";
-import { Notification } from "./Notification";
+import { Alert } from "./Alert";
 
 interface LoginProps {
-  setLogin: (loginState: boolean) => void;
+  setCurrentPage: (page: "login" | "dashboard") => void;
   setAuth: any;
 }
 
-export const LoginForm = ({ setLogin, setAuth }: LoginProps) => {
+export const Login = ({ setCurrentPage, setAuth }: LoginProps) => {
   const [email, setEmail] = useState<undefined | string>();
   const [password, setPassword] = useState<undefined | string>();
   const [error, setError] = useState<undefined | string>();
@@ -17,7 +17,7 @@ export const LoginForm = ({ setLogin, setAuth }: LoginProps) => {
       (user) => user.email === email && user.password === password
     );
     if (!!selectedUser) {
-      setLogin(false);
+      setCurrentPage("dashboard");
       setAuth(selectedUser);
     } else {
       setError(
@@ -76,9 +76,9 @@ export const LoginForm = ({ setLogin, setAuth }: LoginProps) => {
         </button>
       </form>
       {error && (
-        <Notification type={"error"}>
+        <Alert type={"error"}>
           <p>{error}</p>
-        </Notification>
+        </Alert>
       )}
     </div>
   );

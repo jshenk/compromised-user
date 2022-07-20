@@ -1,22 +1,24 @@
 import React, { useState } from "react";
 import "./App.css";
-import { AuthenticatedDashboard } from "./components/AuthenticatedDashboard";
-import { LoginForm } from "./components/LoginForm";
-import { userData } from "./data/userData";
+import { Dashboard } from "./components/Dashboard";
+import { Login } from "./components/Login";
+import { UserDataResponse } from "./models/userDataResponse";
 
 function App() {
-  const [auth, setAuth] = useState(userData);
-  const [login, setLogin] = useState(true);
-
+  const [auth, setAuth] = useState<UserDataResponse | undefined>();
+  const [currentPage, setCurrentPage] =
+    useState<"login" | "dashboard">("login");
+  console.log("auth", auth);
   return (
-    <div className="App max-w-2xl mx-auto">
-      {login ? (
-        <LoginForm setLogin={setLogin} setAuth={setAuth} />
-      ) : (
-        <AuthenticatedDashboard
-          userData={auth}
+    <div className="App max-w-2xl mx-auto px-5">
+      {currentPage === "login" && (
+        <Login setCurrentPage={setCurrentPage} setAuth={setAuth} />
+      )}
+      {currentPage === "dashboard" && auth && (
+        <Dashboard
+          auth={auth}
           setAuth={setAuth}
-          setLogin={setLogin}
+          setCurrentPage={setCurrentPage}
         />
       )}
     </div>

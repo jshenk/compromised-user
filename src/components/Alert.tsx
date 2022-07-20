@@ -3,7 +3,7 @@ interface AlertProps {
   children: JSX.Element;
 }
 
-export const Notification = ({ type, children }: AlertProps) => {
+export const Alert = ({ type, children }: AlertProps) => {
   return (
     <div
       className={`border-l-4 p-5 text-sm text-left mt-10 ` + alertStyles[type]}

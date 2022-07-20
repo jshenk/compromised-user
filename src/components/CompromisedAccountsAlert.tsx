@@ -1,13 +1,20 @@
-interface AccountAlertInterface {
+import { UserDataResponse } from "../models/userDataResponse";
+
+interface CompromisedAccountsAlertProps {
+  auth: UserDataResponse;
   accounts: {
     date: string;
     name: string;
   }[];
-  setAuth: (meta: any) => void;
+  setAuth: (auth: UserDataResponse) => void;
 }
-export const PasswordAlert = ({ accounts, setAuth }: AccountAlertInterface) => {
+export const CompromisedAccountsAlert = ({
+  accounts,
+  setAuth,
+  auth,
+}: CompromisedAccountsAlertProps) => {
   const handleDismiss = () => {
-    setAuth({ meta: { isPasswordCompromised: false } });
+    setAuth({ ...auth, isPasswordCompromised: false });
   };
 
   return (
@@ -17,9 +24,9 @@ export const PasswordAlert = ({ accounts, setAuth }: AccountAlertInterface) => {
         the following accounts:
       </p>
       <ul>
-        {accounts.map((item: { date: string; name: string }) => {
+        {accounts.map((item: { date: string; name: string }, index) => {
           return (
-            <li>
+            <li key={index}>
               {item.date} - {item.name}
             </li>
           );
