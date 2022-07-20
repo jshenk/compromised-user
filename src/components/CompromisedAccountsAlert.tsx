@@ -8,6 +8,8 @@ interface CompromisedAccountsAlertProps {
   }[];
   setAuth: (auth: UserDataResponse) => void;
 }
+
+/** Alert user to their compromised accounts. */
 export const CompromisedAccountsAlert = ({
   accounts,
   setAuth,

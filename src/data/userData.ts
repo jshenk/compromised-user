@@ -1,3 +1,4 @@
+/** Sample user data. */
 export const userData = [
   {
     name: "Timmy Turner",

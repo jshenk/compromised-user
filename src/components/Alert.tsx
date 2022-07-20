@@ -3,6 +3,7 @@ interface AlertProps {
   children: JSX.Element;
 }
 
+/** Displays either warning, error or success alerts. */
 export const Alert = ({ type, children }: AlertProps) => {
   return (
     <div

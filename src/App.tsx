@@ -8,7 +8,7 @@ function App() {
   const [auth, setAuth] = useState<UserDataResponse | undefined>();
   const [currentPage, setCurrentPage] =
     useState<"login" | "dashboard">("login");
-  console.log("auth", auth);
+
   return (
     <div className="App max-w-2xl mx-auto px-5">
       {currentPage === "login" && (

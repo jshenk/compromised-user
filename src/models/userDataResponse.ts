@@ -1,3 +1,4 @@
+/** Returned user data from authentication process. */
 export interface UserDataResponse {
   name: string;
   email: string;
